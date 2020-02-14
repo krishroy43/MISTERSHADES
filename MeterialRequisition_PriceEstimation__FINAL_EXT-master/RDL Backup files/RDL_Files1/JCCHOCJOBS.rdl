@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="ClientNameLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ClientNameLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ClientNameLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProjectNameLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ProjectNameLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ProjectNameLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ContractRefLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ContractRefLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ContractRefLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AgreeNoPONoLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>AgreeNoPONoLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>AgreeNoPONoLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="AgreeDatePODateLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>AgreeDatePODateLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>AgreeDatePODateLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="JobNoLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>JobNoLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>JobNoLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="JobCompleteDateLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>JobCompleteDateLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>JobCompleteDateLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ScopeofWorkLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ScopeofWorkLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ScopeofWorkLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ClientResLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ClientResLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ClientResLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SignNStampLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>SignNStampLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>SignNStampLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="NameLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>NameLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>NameLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DesignationLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>DesignationLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>DesignationLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CommentLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CommentLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CommentLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ReportHeaderLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ReportHeaderLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ReportHeaderLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProjectLocationLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ProjectLocationLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ProjectLocationLBL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ReportDeclarationLBL">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>ReportDeclarationLBL</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>ReportDeclarationLBL</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Bill_to_Customer_No_">
+          <DataField>Bill_to_Customer_No_</DataField>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+        </Field>
+        <Field Name="Contract_Ref_">
+          <DataField>Contract_Ref_</DataField>
+        </Field>
+        <Field Name="Project_Location">
+          <DataField>Project_Location</DataField>
+        </Field>
+        <Field Name="Customer_PO_No_">
+          <DataField>Customer_PO_No_</DataField>
+        </Field>
+        <Field Name="Customer_Po__Date_">
+          <DataField>Customer_Po__Date_</DataField>
+        </Field>
+        <Field Name="No_">
+          <DataField>No_</DataField>
+        </Field>
+        <Field Name="Ending_Date">
+          <DataField>Ending_Date</DataField>
+        </Field>
+        <Field Name="Scope_Of_Work_1">
+          <DataField>Scope_Of_Work_1</DataField>
+        </Field>
+        <Field Name="Scope_Of_Work_2">
+          <DataField>Scope_Of_Work_2</DataField>
+        </Field>
+        <Field Name="Comp_Logo">
+          <DataField>Comp_Logo</DataField>
+        </Field>
+        <Field Name="Comp_Name">
+          <DataField>Comp_Name</DataField>
+        </Field>
+        <Field Name="Project_Manager">
+          <DataField>Project_Manager</DataField>
+        </Field>
+        <Field Name="Comp_Add1">
+          <DataField>Comp_Add1</DataField>
+        </Field>
+        <Field Name="Comp_Add2">
+          <DataField>Comp_Add2</DataField>
+        </Field>
+        <Field Name="Comp_City">
+          <DataField>Comp_City</DataField>
+        </Field>
+        <Field Name="Comp_Country">
+          <DataField>Comp_Country</DataField>
+        </Field>
+        <Field Name="Comp_Phone">
+          <DataField>Comp_Phone</DataField>
+        </Field>
+        <Field Name="Comp_mail">
+          <DataField>Comp_mail</DataField>
+        </Field>
+        <Field Name="Comep_Home_Page">
+          <DataField>Comep_Home_Page</DataField>
+        </Field>
+        <Field Name="Comp_Fax">
+          <DataField>Comp_Fax</DataField>
+        </Field>
+        <Field Name="CustomerDegCap">
+          <DataField>CustomerDegCap</DataField>
+        </Field>
+        <Field Name="ContactRecG_name">
+          <DataField>ContactRecG_name</DataField>
+        </Field>
+        <Field Name="CompanyDegCap_ProjectManager">
+          <DataField>CompanyDegCap_ProjectManager</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

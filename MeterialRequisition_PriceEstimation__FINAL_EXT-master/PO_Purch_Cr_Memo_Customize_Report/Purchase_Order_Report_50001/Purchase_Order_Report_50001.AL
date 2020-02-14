@@ -1,0 +1,438 @@
+report 50001 "Purchase Order"
+{
+    // version MSBM
+
+    DefaultLayout = RDLC;
+    RDLCLayout = 'MeterialRequisition_PriceEstimation__FINAL_EXT-master\PO_Purch_Cr_Memo_Customize_Report\Purchase_Order_Report_50001\Purchase_Order_Report_50001.rdl';
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
+    Caption = 'Purch. Order';
+    PreviewMode = PrintLayout;
+
+    dataset
+    {
+        dataitem("Purchase Header"; "Purchase Header")
+        {
+            DataItemTableView = SORTING("Document Type", "No.")
+                                ORDER(Ascending);
+            RequestFilterFields = "No.", "Buy-from Vendor No.";
+            column(ShiptoName; "Ship-to Name")
+            { }
+            column(Posting_Date; "Posting Date")//FORMAT("Posting Date", 10, '<Day,2>/<Month,2>/<Year,4>'))
+            { }
+            column(Job_No_; "Job No.") { }
+            column(Ship_to_Address; VendRec.address)
+            { }
+            column(Ship_to_Name; vendrec.Name)
+            { }
+            column(Ship_to_Address_2; vendrec."Address 2")
+            { }
+            column(Ship_to_City; VendRec.City)
+            { }
+            column(IsStatus; IsStatus) { }
+            column(Ship_to_Country_Region_Code; VendRec."Country/Region Code")
+            { }
+            column(Ship_to_Post_Code; "Ship-to Post Code")
+            { }
+            column(Payment_Terms_Code; PayTermsRec.Description)
+            { }
+
+            column(Vendor_Order_No_; "Vendor Order No.")
+            { }
+
+            column(Doc_No; "No.")
+            { }
+            column(Comp_Fax; FaxText)
+            { }
+            column(Comp_Logo; CompInfoRec.Picture)
+            { }
+            column(Comp_Name; CompInfoRec.Name)
+            { }
+            column(Comp_Add1; CompInfoRec.Address)
+            { }
+            column(Comp_Add2; CompInfoRec."Address 2")
+            { }
+            column(Comp_City; CompInfoRec.City)
+            { }
+            column(Comp_Country; CompInfoRec.County)
+            { }
+            column(Comp_Phone; PhoneText)
+            { }
+            column(Comp_Phone2; CompInfoRec."Phone No. 2")
+            { }
+            column(Comp_mail; EmailText)
+            { }
+            column(Ref_No; RefNo)//"Vendor Invoice No.")
+            { }
+            column(Shipment_Terms; ShipMethodRec.Description)
+            { }
+            column(Delivery_Date; "Expected Receipt Date")//FORMAT("Expected Receipt Date", 0, '<Day,2>/<Month,2>/<Year,4>'))
+            { }
+            column(Vend_Tel; VendorPhoneText)
+            { }
+            column(Vend_Email; VendorEmailText)
+            { }
+            column(Vend_Fax; VendorFaxText)
+            { }
+            column(ROE; ROE)
+            { }
+            // Modified
+            column(TRN_No; TRNText)
+            { }
+            column(ReturnPolicy_Label; ReturnPolicyLabel)
+            { }
+            column(GuideLine_Label; GuideLineLabel)
+            { }
+            column(DeliveryLocationlabel; DeliveryLocation_label)
+            { }
+            column(Order_Conditions; OrderConditions)
+            { }
+            column(Requested_By; RequestedBy)
+            { }
+            column(Verified_By; VerifiedBy)
+            { }
+            column(Approved_By; ApprovedBy)
+            { }
+            column(Remarks_; Remarks)
+            { }
+            column(Ship_To; ShipTo)
+            { }
+            column(Shipping_TermS; ShippingTerm)
+            { }
+            column(Serial_No; SerialNo)
+            { }
+            column(Reportcaption_Label; Reportcaption)
+            { }
+            column(PO_NO_; PO_NO)
+            { }
+            column(Date_Label_; Date_Label)
+            { }
+            column(RefNo_Label_; RefNo_Label)
+            { }
+            column(Description_Label; DescriptionLabel)
+            { }
+            column(Quantity_Label; QuantityLabel)
+            { }
+            column(UOM_Label_; UOM_Label)
+            { }
+            column(UnitPrice_Label; UnitPriceLabel)
+            { }
+            column(TotalLabel_; TotalLabel)
+            { }
+            column(VatPer_; VatPer)
+            { }
+            column(Totalvalue_Label; Totalvalue_Label)
+            { }
+            column(DeliveryDate_label_; DeliveryDate_label)
+            { }
+            column(Expected_ReceiptDate_Label; ExpectedReceiptDate_Label)
+            { }
+            column(Contact_PersonForDelivery; ContactPersonForDelivery)
+            { }
+            column(Contact_Details; ContactDetails)
+            { }
+            column(OrderConditions_Label; OrderConditionsLabel)
+            { }
+            column(PaymentTerms_Label; PaymentTermsLabel)
+            { }
+            column(AmountExcVAT_Label; AmountExcVat)
+            { }
+            column(AmountIncVat_Label; AmountIncVat)
+            { }
+            column(Header_Amount; Amount)
+            { }
+            column(Header_Amount_Including_VAT; "Amount Including VAT")
+            { }
+            column(Invoice_Discount_Amount; LineTotalDiscount + "Invoice Discount Value")
+            { }
+            column(Header_VAT_Amount; "Amount Including VAT" - Amount)
+            { }
+            column(VATAmount_Label_; VATAmount_Label)
+            { }
+            column(DiscountAmount_Label; DiscountAmountLabel)
+            { }
+            column(AmountExc_Vat_Label; AmountExc_Vat_Label)
+            { }
+            column(Amount_IncVat_Label_; AmountIncVat_Label)
+            { }
+            column(VendorVAT_Reg_Label; VendorVAT_Reg_Label)
+            { }
+            column(VendorVATReg_No; VendorVATRegNo)
+            { }
+            column(TelLabel; Tel_label)
+            { }
+            column(EmailLabel; Email_Label)
+            { }
+            column(Fax_Label; Fax_Label)
+            { }
+            column(GrossTotal_Label_; GrossTotal_Label)
+            { }
+            column(AmountInWord_Label_; AmountInWord_Label)
+            { }
+            column(Location_Name; LocationName)
+            { }
+            column(Location_Address; LocationAddress)
+            { }
+            column(ContactPersonName; ContactPersonName)
+            { }
+            column(ContactPersonPhone; ContactPersonPhone)
+            { }
+            column(GrossAmount; GrossAmount)
+            {
+
+            }
+            column(AmountInWordLabel_; AmountInWordLabel)
+            { }
+            dataitem("Purch. Comment Line";
+            "Purch. Comment Line")
+            {
+                DataItemLink = "No." = FIELD("No.");
+                DataItemLinkReference = "Purchase Header";
+                DataItemTableView = SORTING("Document Type", "No.", "Document Line No.", "Line No.");
+                column(Comment_PurchCommentLine; "Purch. Comment Line".Comment)
+                {
+                }
+            }
+            dataitem("Purchase Line"; "Purchase Line")
+            {
+                DataItemLink = "Document No." = FIELD("No.");
+                column(SL_No; SL_No)
+                { }
+                column(Description_Line; Description)
+                { }
+                column(Quantity_Line; Quantity)
+                { }
+                column(Unit_of_Measure_Line; "Unit of Measure")
+                { }
+                column(Unit_Cost_Lne; "Unit Cost")
+                { }
+                column(No_line; "No.")
+                { }
+                column(TotalAmt; TotalAmt)
+                { }
+                column(AmtWord; AmtWord)
+                { }
+                column(VatPer; "VAT %")
+                { }
+                column(AmountExc_VAT; "Line Amount")
+                { }
+                column(Amount_Inc_VAT; "Amount Including VAT")
+                { }
+                column(Direct_Unit_Cost_; "Direct Unit Cost")
+                { }
+                column(Line_Type; Type)
+                { }
+                column(Line_No_; "Line No.")
+                { }
+                trigger OnPreDataItem();
+                begin
+                    CLEAR(SL_No);
+                    clear(TotalAmt);
+                    Clear(TotalAmt);
+                    Clear(LineTotalDiscount);
+                    Clear(GrossAmount);
+                    CheckRep.InitTextVariable;//LT/////////////////////
+
+                end;
+
+                trigger OnAfterGetRecord();
+                begin
+                    ItemRec.RESET;
+                    IF ItemRec.GET("No.") THEN;
+                    SL_No += 1;
+
+                    if "Purchase Line"."Currency Code" <> '' then begin
+                        currency_Rec.Reset;
+                        currency_Rec.SetRange(Code, "Purchase Line"."Currency Code");
+                        if currency_Rec.FindFirst then
+                            currencyDescription := currency_Rec.CurrencyDescription;//////////////
+                    end;
+                    LineTotalDiscount += "Line Discount Amount";
+                    GrossAmount := GrossAmount + ("Purchase Line".Quantity * "Purchase Line"."Direct Unit Cost");
+                    TotalAmt := "Purchase Header"."Amount Including VAT";
+                    decimalVar1 := (TotalAmt DIV 1);
+                    DecimalVar := (Round(TotalAmt) MOD 1 * 100);
+                    CheckRep.FormatNoText(NoText, decimalVar1, '');/////////////
+                    CheckRep.FormatNoText(NoText1, DecimalVar, '');//////////////
+                    If "Currency Code" = 'AED' then
+                        AmtWord := NoText[1] + ' AED AND ' + NoText1[1] + ' FILS.'
+                    else
+                        AmtWord := "Currency Code" + NoText[1] + ' AND ' + NoText1[1] + currencyDescription;
+                    //AmtWord1 := NoText1[1];
+
+                    /*  CheckRep.FormatNoText(NoText, TotalAmt, '');
+                      AmtWord := "Currency Code" + ' ' + NoText[1];
+
+                      AmtWord2 := AmtWord + AmtWord1;*/
+                end;
+            }
+            trigger OnPostDataItem();
+            begin
+                Clear(ROE);
+            end;
+
+            trigger OnAfterGetRecord();
+            Var
+                RecSP: Record "Salesperson/Purchaser";
+            begin
+                VendRec.RESET;
+                IF VendRec.GET("Buy-from Vendor No.") THEN begin
+                    Clear(VendorEmailText);
+                    Clear(VendorFaxText);
+                    Clear(VendorPhoneText);
+                    Clear(RefNo);
+                    Clear(VendorVATRegNo);
+                    If VendRec."Phone No." <> '' then
+                        VendorPhoneText := VendRec."Phone No.";//'Tel : ' + VendRec."Phone No.";
+                    if VendRec."Fax No." <> '' then
+                        VendorFaxText := VendRec."Fax No.";//'Fax : ' + VendRec."Fax No.";
+                    if VendRec."E-Mail" <> '' then
+                        VendorEmailText := VendRec."E-Mail";// 'Email : ' + VendRec."E-Mail";
+                    if VendRec."VAT Registration No." <> '' then
+                        VendorVATRegNo := VendRec."VAT Registration No.";
+                end;
+
+
+                Clear(RecSP);
+                RecSP.SetRange(Code, "Purchase Header"."Purchaser Code");
+                if RecSP.FindFirst() then begin
+                    ContactPersonName := RecSP.Name;
+                    ContactPersonPhone := RecSP."Phone No.";
+                end;
+                if Status = Status::Released then
+                    IsStatus := true
+                else
+                    IsStatus := false;
+                LocationsRec.Reset();
+                Clear(LocationName);
+                Clear(LocationAddress);
+                Clear(ContactPersonName);
+                Clear(ContactPersonPhone);
+                Clear(JobRec);
+                If LocationsRec.Get("Purchase Header"."Location Code") then begin
+                    // ContactPersonName := LocationsRec.Contact;
+                    // ContactPersonPhone := LocationsRec."Phone No.";
+                    LocationName := LocationsRec.Name;
+                    LocationAddress := LocationsRec.Address + ' ' + LocationsRec."Address 2" + ' ' + LocationsRec.City
+                    + LocationsRec.County + ' ' + LocationsRec."Country/Region Code";
+                end;
+
+                If Status = Status::Open then
+                    Reportcaption := 'DRAFT PURCHASE ORDER'
+                else
+                    Reportcaption := 'PURCHASE ORDER';
+
+                if "Currency Factor" <> 0 then
+                    ROE := 1 / "Currency Factor";
+
+                If PayTermsRec.get("Payment Terms Code") then;
+
+                if ShipMethodRec.Get("Shipment Method Code") then;
+                // Modified
+                If "Purchase Header"."Quote No." <> '' then
+                    RefNo := "Purchase Header"."Quote No."
+                else
+                    RefNo := "Purchase Header"."Vendor Invoice No.";
+            end;
+        }
+    }
+    trigger OnPreReport();
+    begin
+        CompInfoRec.GET;
+        CompInfoRec.CALCFIELDS(Picture);
+        //Modified
+        Clear(PhoneText);
+        Clear(FaxText);
+        Clear(EmailText);
+        Clear(TRNText);
+        If CompInfoRec."Phone No." <> '' then
+            PhoneText := 'Tel : ' + CompInfoRec."Phone No.";
+        if CompInfoRec."Phone No. 2" <> '' then
+            PhoneText := PhoneText + ' | ' + CompInfoRec."Phone No. 2";
+        if CompInfoRec."Fax No." <> '' then
+            FaxText := 'Fax : ' + CompInfoRec."Fax No.";
+        if CompInfoRec."E-Mail" <> '' then
+            EmailText := 'Email : ' + CompInfoRec."E-Mail";
+        if CompInfoRec."VAT Registration No." <> '' then
+            TRNText := CompInfoRec."VAT Registration No.";
+    end;
+
+    var
+        CompInfoRec: Record "Company Information";
+        ItemRec: Record Item;
+        VendRec: Record Vendor;
+        SL_No: Integer;
+        TotalAmt: Decimal;
+        CheckRep: Report Check;
+        NoText: array[1] of Text;
+        NoText1: array[1] of Text;
+        AmtWord: Text[250];
+        AmtVat: Decimal;
+        ROE: Decimal;
+        PayTermsRec: Record "Payment Terms";
+        ShipMethodRec: Record "Shipment Method";
+        DecimalVar: Decimal;
+        decimalVar1: Decimal;
+        currencyDescription: Text[50];
+        currency_Rec: Record Currency;
+        IsStatus: Boolean;
+        //Modified
+        RefNo: Text;
+        ReturnPolicyLabel: Label '(If you cannot comply with this data please state so by return)';
+        GuideLineLabel: Label 'Invoice in duplicate along with this copy of purchase order to be submitted to accounts department.';
+        DeliveryLocation_label: Label 'Delivery Location :';
+        OrderConditions: Label 'We reserve the rights to cancel this order in whole or in part in the event of the supplier not complying with the condition of the order " + VBCRLF +"Quality of material supplied to this order to be our approval.';
+        RequestedBy: Label 'Created By';
+        VerifiedBy: Label 'Verified By';
+        ApprovedBy: Label 'Approved By';
+        Remarks: Label 'Remarks : ';
+        ShipTo: Label 'Ship To : ';
+        ShippingTerm: Label 'Shipping Terms :';
+        SerialNo: Label 'S.No. ';
+        Reportcaption: Text;
+        PO_NO: Label 'PO No. : ';
+        Date_Label: Label 'Date : ';
+        RefNo_Label: Label 'Ref No. : ';
+        DescriptionLabel: Label 'Description';
+        QuantityLabel: Label 'Quantity';
+        UOM_Label: Label 'UOM';
+        UnitPriceLabel: Label 'Unit Price';
+        TotalLabel: Label 'Total';
+        VatPer: Label 'VAT(%)';
+        Totalvalue_Label: Label 'Total Value';
+        DeliveryDate_label: Label 'Delivery Date : ';
+        ExpectedReceiptDate_Label: Label 'Expected Delivery Date ';
+        ContactPersonForDelivery: Label 'Contact Person For Delivery : ';
+        ContactDetails: Label 'Contact Details : ';
+        OrderConditionsLabel: Label 'Order Conditions : ';
+        PaymentTermsLabel: Label 'Payment Terms : ';
+        PhoneText: Text;
+        FaxText: Text;
+        EmailText: Text;
+        TRNText: Text;
+        VendorPhoneText: Text;
+        VendorFaxText: Text;
+        VendorEmailText: Text;
+        AmountExcVat: Label 'Amount Exc. VAT ';
+        AmountIncVat: Label 'Amount Inc. VAT ';
+        VATAmount_Label: Label 'VAT Amount ';
+        DiscountAmountLabel: Label 'Discount Amount ';
+        AmountExc_Vat_Label: Label 'Amount';
+        AmountIncVat_Label: Label 'Total Amount';
+        VendorVAT_Reg_Label: Label 'TRN No. : ';
+        VendorVATRegNo: Text;
+        Tel_Label: Label 'Tel : ';
+        Email_Label: Label 'Email : ';
+        Fax_Label: Label 'Fax No. : ';
+        GrossTotal_Label: Label 'Gross Amount ';
+        AmountInWord_Label: Label 'Net Amount ';
+        AmountInWordLabel: Label 'Amount in Words ';
+        LocationName: Text;
+        LocationAddress: Text;
+        ContactPersonName: Text;
+        ContactPersonPhone: Text;
+        LocationsRec: Record Location;
+        JobRec: Record Job;
+        LineTotalDiscount: Decimal;
+        GrossAmount: Decimal;
+}
